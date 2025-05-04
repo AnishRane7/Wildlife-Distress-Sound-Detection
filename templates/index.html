@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildlife Sound Guardian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static\css\styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+    
+                <h1>Wildlife Sound Guardian</h1>
+            </div>
+            <p class="tagline">Detecting animal distress calls to protect wildlife through acoustic monitoring</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h2>Upload Wildlife Audio</h2>
+                    <p>Upload an audio recording to detect if it contains an animal in distress</p>
+                    
+                    <form id="upload-form" enctype="multipart/form-data">
+                        <div class="file-input-container">
+                            <input type="file" id="audio-file" name="file" accept="audio/*" class="file-input">
+                            <label for="audio-file" class="file-label">
+                                <span class="file-icon">🔊</span>
+                                <span class="file-text">Choose audio file</span>
+                            </label>
+                            <span id="file-name">No file selected</span>
+                        </div>
+                        
+                        <button type="submit" class="upload-btn">Analyze Audio</button>
+                    </form>
+                    
+                    <div class="audio-player-container" id="audio-player-container" style="display: none;">
+                        <h3>Audio Preview</h3>
+                        <audio id="audio-player" controls></audio>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-section" id="results-section" style="display: none;">
+                <h2 class="section-title">Analysis Results</h2>
+                
+                <div class="result-container">
+                    <div class="result-status">
+                        <div id="status-indicator" class="status-indicator"></div>
+                        <h3 id="result-title" class="result-title"></h3>
+                    </div>
+                    
+                    <div class="result-details">
+                        <div class="confidence-meter">
+                            <p>Confidence Level:</p>
+                            <div class="meter-container">
+                                <div id="confidence-bar" class="confidence-bar"></div>
+                                <span id="confidence-value" class="confidence-value"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="spectrogram-container">
+                            <h3>Audio Spectrogram</h3>
+                            <img id="spectrogram-image" src="" alt="Audio spectrogram" class="spectrogram">
+                        </div>
+                        
+                        <div class="interpretation">
+                            <h3>What This Means</h3>
+                            <div id="normal-interpretation" class="interpretation-text" style="display: none;">
+                                <p>The audio appears to contain normal wildlife sounds. The animal is likely in a neutral or relaxed state.</p>
+                                <ul>
+                                    <li>Regular vocalization patterns</li>
+                                    <li>Typical frequency and amplitude</li>
+                                    <li>No signs of alarm or distress</li>
+                                </ul>
+                            </div>
+                            <div id="distress-interpretation" class="interpretation-text" style="display: none;">
+                                <p><strong>The audio may contain animal distress calls. This could indicate:</strong></p>
+                                <ul>
+                                    <li>An animal in pain or danger</li>
+                                    <li>Potential injury or predator threat</li>
+                                    <li>Environmental stress factors</li>
+                                </ul>
+                                <p class="alert">If this is a live recording, consider alerting local wildlife authorities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="conservation-section">
+                <h2>Conservation Through Acoustic Monitoring</h2>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="card-icon">🌿</div>
+                        <h3>Early Detection</h3>
+                        <p>Identifying distress calls early can help conservation teams respond quickly to animals in need.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">🔍</div>
+                        <h3>Non-invasive</h3>
+                        <p>Acoustic monitoring allows researchers to study wildlife without disturbing their natural habitats.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">📊</div>
+                        <h3>Population Tracking</h3>
+                        <p>Sound patterns help track species distribution and monitor population changes over time.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Wildlife Sound Guardian | A Conservation Technology Project</p>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact</a>
+            </div>
+        </footer>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Analyzing audio...</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
