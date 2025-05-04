@@ -36,11 +36,13 @@ pip install -r requirements.txt
 
 3. **Download the pre-trained model**  
    Download the model from [Google Drive](https://drive.google.com/file/d/1ezn_ZfVslVqHBi19MQmLo5EPX5MYJhVT/view?usp=sharing) and place it in the `model/` directory:
+```bash
 mkdir -p model
+```
 After downloading, move the model file to:
 model/wildlife_distress_detector.h5
 
-4. Run the app:
+5. Run the app:
 ```bash
 python app.py
 ```
